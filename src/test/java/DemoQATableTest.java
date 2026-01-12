@@ -63,8 +63,6 @@ public class DemoQATableTest {
         Assert.assertEquals(actualAge, updatedAge);
     }
 
-    // ---------------- Utility Methods ----------------
-
     public int getRealRowCount() {
         List<WebElement> rows = driver.findElements(By.cssSelector(".rt-tbody .rt-tr-group"));
         int count = 0;

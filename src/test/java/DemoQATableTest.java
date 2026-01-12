@@ -14,9 +14,9 @@ public class DemoQATableTest {
     WebDriver driver;
     WebDriverWait wait;
 
-    String firstName = "Rakesh";
-    String lastName = "Kumar";
-    String email = "rakesh@test.com";
+    String firstName = "Charu";
+    String lastName = "Dubey";
+    String email = "charu@test.com";
     String age = "28";
     String updatedAge = "35";
 

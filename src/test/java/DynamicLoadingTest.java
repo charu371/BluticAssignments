@@ -34,17 +34,14 @@ public class DynamicLoadingTest {
     public void testDynamicLoading() throws IOException {
         driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
 
-        // Click Start
         driver.findElement(By.cssSelector("#start button")).click();
 
-        // Wait for loading to finish and text to appear
         WebElement finishElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
 
-        // Assert text
         String actualText = finishElement.getText();
         Assert.assertEquals(actualText, "Hello World!", "Text mismatch!");
 
-        // Capture Screenshot
+        // capturing screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File destFile = new File("target/screenshots/hello_world.png");
         FileUtils.copyFile(screenshot, destFile);

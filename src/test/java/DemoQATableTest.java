@@ -32,14 +32,11 @@ public class DemoQATableTest {
     @Test
     public void webTableAutomation() {
 
-        // Step 1 - Count real data rows
         int initialRowCount = getRealRowCount();
         System.out.println("Initial real rows = " + initialRowCount);
 
-        // Step 2 - Click Add
         driver.findElement(By.id("addNewRecordButton")).click();
 
-        // Fill form
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).sendKeys(firstName);
         driver.findElement(By.id("lastName")).sendKeys(lastName);
         driver.findElement(By.id("userEmail")).sendKeys(email);
@@ -48,14 +45,12 @@ public class DemoQATableTest {
         driver.findElement(By.id("department")).sendKeys("QA");
         driver.findElement(By.id("submit")).click();
 
-        // Step 3 - Wait until new email appears
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + email + "']")));
 
         int newRowCount = getRealRowCount();
         System.out.println("After add real rows = " + newRowCount);
         Assert.assertEquals(newRowCount, initialRowCount + 1);
 
-        // Step 4 - Click Edit for newly added user
         clickElementJS(getEditButtonOfUser(email));
 
         WebElement ageField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("age")));
@@ -63,7 +58,6 @@ public class DemoQATableTest {
         ageField.sendKeys(updatedAge);
         driver.findElement(By.id("submit")).click();
 
-        // Step 5 - Verify updated age
         String actualAge = getAgeOfUser(email);
         System.out.println("Updated Age = " + actualAge);
         Assert.assertEquals(actualAge, updatedAge);
